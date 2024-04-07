@@ -8,6 +8,7 @@ app.use(cors())
 // My API Key PLEASE DON'T SHARE
 const API_KEY = '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'
 
+// POST Request
 app.post('/completions', async (req, res) => {
     const options = {
         method: "POST",
@@ -17,7 +18,7 @@ app.post('/completions', async (req, res) => {
         },
         body: JSON.stringify({
             "model": "gpt-3.5-turbo",
-            "messages": [{"role": "system", "content": "You are a helpful assistant."}],
+            "messages": [{"role": "user", "content": req.body.message}],
             max_tokens: 100,
         })
     }
@@ -30,4 +31,5 @@ app.post('/completions', async (req, res) => {
     }
 })
 
+// Listens on Port 8000 for now
 app.listen(PORT, () => {console.log(`Server is running on port ${PORT}`)})
