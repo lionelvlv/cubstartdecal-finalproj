@@ -12,12 +12,12 @@ const convos = new Map()
 // POST Request
 app.post('/completions', async (req, res) => {
     if (req.body.message === undefined || req.body.title === undefined) {
-        res.status(400).send('Bad Request');
+        res.status(400).send('Bad Request')
         return;
     }
-    let messages = [{"role": "system", "content": "You are helpful and funny"}];
-    const request = {"role": "user", "content": req.body.message};
-    let convo;
+    let messages
+    let convo
+    const request = {"role": "user", "content": req.body.message}
 
     if (convos.has(req.body.title)) {
         convo = convos.get(req.body.title);
@@ -30,7 +30,7 @@ app.post('/completions', async (req, res) => {
         convo = convos.get(title);
         console.log("new convo created!", title)
         messages = convo;
-        convo.push({"role": "system", "content": "You are helpful and funny"});
+        convo.push({"role": "system", "content": "You are helpful and funny"})
     }
 
     messages.push(request);    
