@@ -11,6 +11,10 @@ const convos = new Map()
 
 // POST Request
 app.post('/completions', async (req, res) => {
+    if (req.body.message === undefined || req.body.title === undefined) {
+        res.status(400).send('Bad Request');
+        return;
+    }
     let messages = [{"role": "system", "content": "You are helpful and funny"}];
     const request = {"role": "user", "content": req.body.message};
     let convo;
@@ -18,15 +22,18 @@ app.post('/completions', async (req, res) => {
     if (convos.has(req.body.title)) {
         convo = convos.get(req.body.title);
         messages = convo;
+        console.log("convo obtained!", req.body.title)
+        console.log(convo)
     } else {
-        convos.set(req.body.title, []);
-        convo = convos.get(req.body.title);
+        let title = req.body.message
+        convos.set(title, []);
+        convo = convos.get(title);
+        console.log("new convo created!", title)
+        messages = convo;
         convo.push({"role": "system", "content": "You are helpful and funny"});
     }
 
-    messages.push(request);
-    convo.push(request);
-    
+    messages.push(request);    
 
     
     const options = {
@@ -45,6 +52,8 @@ app.post('/completions', async (req, res) => {
         const response = await fetch('https://api.openai.com/v1/chat/completions', options)
         const data = await response.json()
         convo.push(data.choices[0].message)
+        console.log("updated convo with AI response!")
+        console.log(convo)
         res.send(data)
     } catch (error) {
         console.log(error)
