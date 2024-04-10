@@ -5,6 +5,10 @@ import Login from './Login'
 import Register from "./Register";
 import Reset from "./Reset";
 import Dashboard from "./Dashboard";
+import Chat from './chat';
+import Input from './input';
+import Sidebar from './sidebar';
+
 
 function App() {
   const [value, setValue] = useState(null)
@@ -81,26 +85,9 @@ else if (currentTitle && value && message) {
           <Route exact path="/dashboard" element={<Dashboard />} />
         </Routes>
       </Router>
-      <section className="sidebar">
-        <button onClick={createNewChat}>+ New Chat</button>
-        <ul className="history">
-          {uniqueTitles?.map((uniqueTitle, index) => <li key={index} onClick={() => handleClick(uniqueTitle)}>{uniqueTitle}</li>)}
-        </ul>
-      </section>
-      <section className="main">
-        {!currentTitle && <h1>Office Hours AI Tutor</h1>}
-        <ul className="feed">
-          {currentChat.map((chatMessage, index) => <li key={index}>
-            <p className='role'>{chatMessage.role}</p>
-            <p className='message'>{chatMessage.content}</p>
-            </li>)}
-        </ul>
-      </section>
-      <div className='input-container'>
-        {/* Don't ask me what this does LOL */}
-        <input value={value} onChange={(e) => setValue(e.target.value)}/>
-        <div id="submit" onClick={getMessages}>click me</div>
-      </div>
+      <Sidebar uniqueTitles={uniqueTitles} handleClick={handleClick} createNewChat={createNewChat} />
+      <Chat currentTitle={currentTitle} currentChat={currentChat} />
+      <Input value={value} setValue={setValue} getMessages={getMessages} />
     </div>
   )
 }
