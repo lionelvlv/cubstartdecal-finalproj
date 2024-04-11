@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 
+
 function App() {
   const [value, setValue] = useState(null)
   const [message, setMessage] = useState(null)
@@ -64,30 +65,48 @@ else if (currentTitle && value && message) {
   const uniqueTitles = Array.from(new Set(previousChats.map(previousChat => previousChat.title)))
   console.log(uniqueTitles)
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter' && value) {
+      getMessages(); 
+    }
+  };
+
+
   return (
     <div className="App">
-      <section className="sidebar">
-        <button onClick={createNewChat}>+ New Chat</button>
-        <ul className="history">
-          {uniqueTitles?.map((uniqueTitle, index) => <li key={index} onClick={() => handleClick(uniqueTitle)}>{uniqueTitle}</li>)}
-        </ul>
-      </section>
-      <section className="main">
-        {!currentTitle && <h1>Office Hours AI Tutor</h1>}
-        <ul className="feed">
-          {currentChat.map((chatMessage, index) => <li key={index}>
-            <p className='role'>{chatMessage.role}</p>
-            <p className='message'>{chatMessage.content}</p>
-            </li>)}
-        </ul>
-      </section>
-      <div className='input-container'>
-        {/* Don't ask me what this does LOL */}
-        <input value={value} onChange={(e) => setValue(e.target.value)}/>
-        <div id="submit" onClick={getMessages}>click me</div>
-      </div>
-    </div>
-  )
+          {/* Home page content */}
+          <div className="content-area">
+            <section className="main">
+              {!currentTitle && <h1>Office Hours AI Tutor</h1>}
+              <ul className="feed">
+                {currentChat.map((chatMessage, index) => <li key={index}>
+                  <p className='role'>{chatMessage.role}</p>
+                  <p className='message'>{chatMessage.content}</p>
+                  </li>)}
+              </ul>
+            </section>
+            <div className='input-container'>
+              {/* Don't ask me what this does LOL */}
+              <input value={value}
+              onChange={(e) => setValue(e.target.value)}
+              onKeyPress={handleKeyPress}
+              placeholder="Type your message..."
+              />
+              </div>
+              </div> 
+              <aside className="sidebar">
+                <button onClick={createNewChat}>+ New Chat</button>
+                <ul className="history">
+                  {uniqueTitles?.map((uniqueTitle, index) => <li key={index} onClick={() => handleClick(uniqueTitle)}>{uniqueTitle}</li>)}
+                </ul>
+              <div> {/* Other sidebar content if needed */}</div>
+                <div className="token-count">
+                  <p>Available tokens</p>
+                  <p>0/5</p>
+                </div>
+              </aside>
+        </div>  
+  );
 }
 
 export default App
