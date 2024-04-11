@@ -8,7 +8,7 @@ app.use(cors())
 // My API Key PLEASE DON'T SHARE
 const API_KEY = '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'
 const convos = new Map()
-
+const personality = "You are helpful and funny"
 // POST Request
 app.post('/completions', async (req, res) => {
     if (req.body.message === undefined || req.body.title === undefined) {
@@ -30,7 +30,7 @@ app.post('/completions', async (req, res) => {
         convo = convos.get(title);
         console.log("new convo created!", title)
         messages = convo;
-        convo.push({"role": "system", "content": "You are helpful and funny"})
+        convo.push({"role": "system", "content": personality})
     }
 
     messages.push(request);    
