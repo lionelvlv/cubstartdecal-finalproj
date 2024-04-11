@@ -5,10 +5,9 @@ import Login from './Login'
 import Register from "./Register";
 import Reset from "./Reset";
 import Dashboard from "./Dashboard";
-import Chat from './chat';
-import Input from './input';
-import Sidebar from './sidebar';
-
+import Chat from './Chat';
+import Input from './Input';
+import Sidebar from './Sidebar';
 
 
 
@@ -80,6 +79,9 @@ else if (currentTitle && value && message) {
 
     <div className="App">
       <Router>
+        {/* <Switch>
+          <Route path="/login" component={LoginPage} />
+        </Switch> */}
         <Routes>
           <Route exact path="/" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
