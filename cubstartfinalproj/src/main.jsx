@@ -7,6 +7,10 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Reset from './Reset.jsx'
+import Register from './Register.jsx'
+import Login from './Login.jsx'
+import Dashboard from './Dashboard.jsx'
 
 // Route additional pages here
 const router = createBrowserRouter([
@@ -15,8 +19,24 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "/login",
+    path: "/loginPage",
     element: <LoginPage />,
+  },
+  {
+    path: "/reset",
+    element: <Reset />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
   }
 ]);
 
