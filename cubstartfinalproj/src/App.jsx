@@ -1,16 +1,9 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Login from './Login'
-import Register from "./Register";
-import Reset from "./Reset";
-import Dashboard from "./Dashboard";
-import Chat from './Chat';
-import Input from './Input';
-import Sidebar from './Sidebar';
-import Navbar from './components/Navbar';
-
-
+import Sidebar from './components/App/Sidebar'
+import Chat from './components/App/Chat'
+import Input from './components/App/Input'
+import Navbar from './components/Navbar'
 function App() {
   const [value, setValue] = useState(null)
   const [message, setMessage] = useState(null)
@@ -74,25 +67,21 @@ else if (currentTitle && value && message) {
   const uniqueTitles = Array.from(new Set(previousChats.map(previousChat => previousChat.title)))
   console.log(uniqueTitles)
 
-  return (
-    
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter' && value) {
+      getMessages(); 
+    }
+  };
 
-    <div className="App">
+
+  return (
+    <div>
       <Navbar />
-      {/* <Router>
-        <Routes>
-          <Route exact path="/" element={<Login />} />
-          <Route exact path="/register" element={<Register />} />
-          <Route exact path="/reset" element={<Reset />} />
-          <Route exact path="/dashboard" element={<Dashboard />} />
-        </Routes>
-      </Router> */}
-      
       <Sidebar uniqueTitles={uniqueTitles} handleClick={handleClick} createNewChat={createNewChat} />
       <Chat currentTitle={currentTitle} currentChat={currentChat} />
       <Input value={value} setValue={setValue} getMessages={getMessages} />
     </div>
-  )
+  );
 }
 
 export default App
