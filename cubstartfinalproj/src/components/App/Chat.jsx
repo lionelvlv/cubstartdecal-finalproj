@@ -1,3 +1,4 @@
+import "./chat.css";  
 function Chat({ currentTitle, currentChat }) {
     return (
       <section className="main">

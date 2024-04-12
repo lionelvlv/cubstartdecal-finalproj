@@ -1,10 +1,22 @@
+import "./input.css";
+
 function Input({ value, setValue, getMessages }) {
-    return (
-      <div className='input-container'>
-        <input value={value} onChange={(e) => setValue(e.target.value)}/>
-        <div id="submit" onClick={getMessages}>click me</div>
-      </div>
-    );
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter' && value) {
+      getMessages(); 
+    }
   }
+  return (
+    <div className="input-container">
+      {/* Don't ask me what this does LOL */}
+      <input
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        onKeyDown={handleKeyPress}
+        placeholder="Type your message..."
+      />
+    </div>
+  );
+}
 
 export default Input;

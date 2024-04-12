@@ -1,6 +1,8 @@
+import "./sidebar.css";
+
 function Sidebar({ uniqueTitles, handleClick, createNewChat }) {
     return (
-      <section className="sidebar">
+      <aside className="sidebar">
         <button onClick={createNewChat}>+ New Chat</button>
         <ul className="history">
           {uniqueTitles?.map((uniqueTitle, index) => (
@@ -9,7 +11,11 @@ function Sidebar({ uniqueTitles, handleClick, createNewChat }) {
             </li>
           ))}
         </ul>
-      </section>
+        <div className="token-count">
+          <p>Available tokens</p>
+          <p>0/5</p>
+        </div>
+      </aside>
     );
   }
 

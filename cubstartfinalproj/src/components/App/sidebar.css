@@ -1,0 +1,30 @@
+/* Styling for sidebar that shows tokens, with a column layout */
+.sidebar-tokens {
+    background-color: #4C5F70;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  /* Specific styling for the token count area within the sidebar */
+  .token-count {
+    background-color: #354B5E;
+    padding: 1rem;
+    border-radius: 5px;
+  }
+
+  /* Styling for the fixed sidebar on the left, providing constant access to navigation */
+.sidebar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 250px; 
+    overflow-y: auto;
+    background-color: #1a1a1a;
+    color: white;
+    padding: 1rem;
+    z-index: 1000;
+  }
