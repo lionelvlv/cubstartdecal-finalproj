@@ -76,15 +76,17 @@ else if (currentTitle && value && message) {
     <div className="App">
           {/* Home page content */}
           <div className="content-area">
-            <section className="main">
+          <section className="main">
               {!currentTitle && <h1>Office Hours AI Tutor</h1>}
               <ul className="feed">
-                {currentChat.map((chatMessage, index) => <li key={index}>
-                  <p className='role'>{chatMessage.role}</p>
-                  <p className='message'>{chatMessage.content}</p>
-                  </li>)}
+                {currentChat.map((chatMessage, index) => (
+                  <li key={index}>
+                    <p className='role'>{chatMessage.role}</p>
+                    <p className='message'>{chatMessage.content}</p>
+                  </li>
+                ))}
               </ul>
-            </section>
+          </section>
             <div className='input-container'>
               {/* Don't ask me what this does LOL */}
               <input value={value}

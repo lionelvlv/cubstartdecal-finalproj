@@ -150,10 +150,86 @@
   right: 0;
   top: 0;
   bottom: 0;
-  width: 250px;
+  width: 250px; 
   overflow-y: auto;
   background-color: #1a1a1a;
   color: white;
   padding: 1rem;
   z-index: 1000;
+}
+
+/* Main content area styling, flexible display to fill available space */
+.content-area {
+  margin-left: 250px; 
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column; 
+}
+
+/* Styles for the main section where chat messages appear, ensuring it is centered */
+.main {
+  flex: 1;
+  padding: 20px; 
+  overflow-y: auto; 
+}
+
+/* Ensures messages within the feed are centered */
+.feed {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Styling for individual messages */
+.feed li {
+  background-color: #f8f9fa; 
+  border-radius: 8px;
+  margin: 10px 0;
+  padding: 10px;
+  width: 80%; 
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+}
+
+/* Container for input and submit button, ensuring it is visible and accessible */
+.input-container {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  left: 250px;
+  right: 0;
+  bottom: 0;
+  padding: 1rem;
+  background-color: #fff; 
+  border-top: 1px solid #ccc;
+}
+
+/* Adjust input and submit button styling */
+.input-container input {
+  flex-grow: 1; 
+  margin-right: 1rem;
+}
+
+.input-container #submit {
+  white-space: nowrap; 
+}
+
+
+/* Main section adjustments to accommodate the sidebar and ensure proper spacing */
+.main {
+  flex: 1;
+  padding: 20px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  overflow-y: auto; 
+}
+
+/* Specific styling for the main header when there is no current title */
+.main h1 {
+  width: 100%;  
+  text-align: center;  
+  margin-top: 20px;  
 }
