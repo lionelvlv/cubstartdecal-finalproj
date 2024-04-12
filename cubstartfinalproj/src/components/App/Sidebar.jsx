@@ -1,3 +1,4 @@
+import Navbar from "../Navbar";
 import "./sidebar.css";
 
 function Sidebar({ uniqueTitles, handleClick, createNewChat }) {
@@ -13,7 +14,7 @@ function Sidebar({ uniqueTitles, handleClick, createNewChat }) {
         </ul>
         <div className="token-count">
           <p>Available tokens</p>
-          <p>0/5</p>
+          <p>0/10000</p>
         </div>
       </aside>
     );
