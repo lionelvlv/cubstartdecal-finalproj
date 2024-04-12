@@ -7,6 +7,7 @@ import {
   signInWithGoogle,
 } from "./firebase";
 import "./Register.css";
+import Navbar from "./components/Navbar";
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,10 +20,11 @@ function Register() {
   };
   useEffect(() => {
     if (loading) return;
-    if (user) navigate.replace("/dashboard");
+    if (user) navigate("/dashboard");
   }, [user, loading]);
   return (
     <div className="register">
+      <Navbar />
       <div className="register__container">
         <input
           type="text"

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { auth, sendPasswordResetEmail } from "./firebase";
 import "./Reset.css";
+import Navbar from "./components/Navbar";
 function Reset() {
   const [email, setEmail] = useState("");
   const [user, loading, error] = useAuthState(auth);
@@ -14,6 +15,7 @@ function Reset() {
   }, [user, loading]);
   return (
     <div className="reset">
+      <Navbar />
       <div className="reset__container">
         <input
           type="text"
