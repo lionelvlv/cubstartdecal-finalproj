@@ -11,6 +11,8 @@ import Reset from './Reset.jsx'
 import Register from './Register.jsx'
 import Login from './Login.jsx'
 import Dashboard from './Dashboard.jsx'
+import HomePage from './pages/AboutUs.jsx'
+import AboutUs from './pages/AboutUs.jsx'
 
 // Route additional pages here
 const router = createBrowserRouter([
@@ -37,6 +39,10 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <Dashboard />,
+  },
+  {
+    path: "/aboutus",
+    element: <AboutUs />,
   }
 ]);
 
