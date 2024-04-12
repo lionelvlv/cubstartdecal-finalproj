@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
-import './App.css'
-
-
+import './css/App.css'
+import Sidebar from './components/App/Sidebar'
+import Chat from './components/App/Chat'
+import Input from './components/App/Input'
+import Navbar from './components/Navbar'
 function App() {
   const [value, setValue] = useState(null)
   const [message, setMessage] = useState(null)
@@ -73,39 +75,12 @@ else if (currentTitle && value && message) {
 
 
   return (
-    <div className="App">
-          {/* Home page content */}
-          <div className="content-area">
-            <section className="main">
-              {!currentTitle && <h1>Office Hours AI Tutor</h1>}
-              <ul className="feed">
-                {currentChat.map((chatMessage, index) => <li key={index}>
-                  <p className='role'>{chatMessage.role}</p>
-                  <p className='message'>{chatMessage.content}</p>
-                  </li>)}
-              </ul>
-            </section>
-            <div className='input-container'>
-              {/* Don't ask me what this does LOL */}
-              <input value={value}
-              onChange={(e) => setValue(e.target.value)}
-              onKeyPress={handleKeyPress}
-              placeholder="Type your message..."
-              />
-              </div>
-              </div> 
-              <aside className="sidebar">
-                <button onClick={createNewChat}>+ New Chat</button>
-                <ul className="history">
-                  {uniqueTitles?.map((uniqueTitle, index) => <li key={index} onClick={() => handleClick(uniqueTitle)}>{uniqueTitle}</li>)}
-                </ul>
-              <div> {/* Other sidebar content if needed */}</div>
-                <div className="token-count">
-                  <p>Available tokens</p>
-                  <p>0/5</p>
-                </div>
-              </aside>
-        </div>  
+    <div>
+      <Navbar />
+      <Sidebar uniqueTitles={uniqueTitles} handleClick={handleClick} createNewChat={createNewChat} />
+      <Chat currentTitle={currentTitle} currentChat={currentChat} />
+      <Input value={value} setValue={setValue} getMessages={getMessages} />
+    </div>
   );
 }
 
