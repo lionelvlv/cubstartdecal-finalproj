@@ -8,7 +8,7 @@ import Dashboard from "./Dashboard";
 import Chat from './Chat';
 import Input from './Input';
 import Sidebar from './Sidebar';
-
+import Navbar from './components/Navbar';
 
 
 function App() {
@@ -78,17 +78,16 @@ else if (currentTitle && value && message) {
     
 
     <div className="App">
-      <Router>
-        {/* <Switch>
-          <Route path="/login" component={LoginPage} />
-        </Switch> */}
+      <Navbar />
+      {/* <Router>
         <Routes>
           <Route exact path="/" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/reset" element={<Reset />} />
           <Route exact path="/dashboard" element={<Dashboard />} />
         </Routes>
-      </Router>
+      </Router> */}
+      
       <Sidebar uniqueTitles={uniqueTitles} handleClick={handleClick} createNewChat={createNewChat} />
       <Chat currentTitle={currentTitle} currentChat={currentChat} />
       <Input value={value} setValue={setValue} getMessages={getMessages} />
