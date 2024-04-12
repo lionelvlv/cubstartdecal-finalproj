@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import './App.css'
+import './css/App.css'
 import Sidebar from './components/App/Sidebar'
 import Chat from './components/App/Chat'
 import Input from './components/App/Input'
