@@ -67,13 +67,6 @@ else if (currentTitle && value && message) {
   const uniqueTitles = Array.from(new Set(previousChats.map(previousChat => previousChat.title)))
   console.log(uniqueTitles)
 
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter' && value) {
-      getMessages(); 
-    }
-  };
-
-
   return (
     <div>
       <Navbar />
