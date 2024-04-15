@@ -1,6 +1,6 @@
 /* Styling for sidebar that shows tokens, with a column layout */
 .sidebar-tokens {
-    background-color: #4C5F70;
+    background-color: #51aeff;
     color: white;
     padding: 1rem;
     display: flex;
@@ -10,7 +10,7 @@
   
   /* Specific styling for the token count area within the sidebar */
   .token-count {
-    background-color: #354B5E;
+    background-color: #38a2ff;
     padding: 1rem;
     border-radius: 5px;
   }
@@ -23,7 +23,7 @@
     bottom: 0;
     width: 250px; 
     overflow-y: auto;
-    background-color: #1a1a1a;
+    background-color: #727272;
     color: white;
     padding: 1rem;
     z-index: 1000;
