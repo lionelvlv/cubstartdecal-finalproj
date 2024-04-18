@@ -5,7 +5,7 @@ import {
   auth,
   registerWithEmailAndPassword,
   signInWithGoogle,
-} from "./firebase";
+} from "../firebase";
 import "./css/Register.css";
 import Navbar from "./components/Navbar";
 function Register() {
