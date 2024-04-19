@@ -1,33 +1,54 @@
 const PORT = 8000
 import express from 'express';
 import cors from 'cors';
-
 import {db} from './firebase.js';
 import {collection, getDocs} from 'firebase/firestore';
 const usersCollection = collection(db, 'users');
+import { getAuth } from "firebase/auth";
 const data = await getDocs(usersCollection);
 console.log(data)
+import { doc, setDoc, updateDoc, deleteDoc, query, where } from "firebase/firestore";
 
 const app = express()
 app.use(express.json())
 app.use(cors())
-
-function loadFrontEnd() {
-    // Load the Frontend here
-    // I'm not sure how to do this
-    // I'm losing it <owo>
+let user
+// How to get UUID of user that's currently logged in?
+async function getUsername() {
+    const auth = getAuth();
+    user = auth.currentUser;
+    if (user) {
+        console.log(user.displayName + " is logged in woot woot")
+        return user.displayName;
+    } else {
+        console.log("No user is logged in")
+        return null;
+    }
 }
 
 async function createNewUser(user) {
     await setDoc(doc(usersCollection, user, {convo: null}));
 }
 
+// Returns the convo of a user in the database
 async function getPrevConvo(user) {
+    // Should be loaded everytime we go to home or something
+    // Export this function?
+    // Have frontend logic work in App.jsx, but use this function to load the data.. probably
     const q = query(usersCollection, where("user", "==", user));
     const querySnapshot = await getDocs(q);
     return querySnapshot.docs[0].data().convo
 }
 
+async function updateConvo(user, NewConvo) {
+    await updateDoc(doc(usersCollection, user), {
+        convo: NewConvo
+    });
+}
+
+async function deleteConvo(user) {
+    await deleteDoc(doc(usersCollection, user));
+}
 
 // My API Key PLEASE DON'T SHARE
 const API_KEY = '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'
@@ -79,6 +100,7 @@ app.post('/completions', async (req, res) => {
         console.log("updated convo with AI response!")
         console.log(convo)
         res.send(data)
+        getUsername()
     } catch (error) {
         console.log(error)
         res.status(500).send('Internal Server Error');
