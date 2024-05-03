@@ -1,6 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+<<<<<<< Updated upstream
 import "./Navbar.css";  
+=======
+import "./Navbar.css";
+>>>>>>> Stashed changes
 
 const Navbar = () => {
     return (
