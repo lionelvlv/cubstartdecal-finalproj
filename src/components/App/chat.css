@@ -1,0 +1,44 @@
+/* Styles for the main section where chat messages appear, ensuring it is centered */
+.main {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Ensures messages within the feed are centered */
+.feed {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Styling for individual messages */
+.feed li {
+    background-color: #f8f9fa;
+    color: #333; /* Update the text color here */
+    border-radius: 8px;
+    margin: 10px 0;
+    padding: 10px;
+    width: 80%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Main section adjustments to accommodate the sidebar and ensure proper spacing */
+.main {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
+
+/* Specific styling for the main header when there is no current title */
+.main h1 {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}

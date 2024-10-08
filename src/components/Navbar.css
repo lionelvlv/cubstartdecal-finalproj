@@ -1,0 +1,35 @@
+.navbar {
+    width: 100%;
+<<<<<<< Updated upstream
+    background-color: #30ff7f;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+    position: fixed; 
+    top: 0;
+=======
+    background-color: #2dffa8;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+    position: fixed; 
+    top: 0; 
+>>>>>>> Stashed changes
+    left: 0; 
+    z-index: 1000; 
+}
+
+.navbar-nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.nav-item {
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: black;
+}
